@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useGetTopHeadlinesQuery } from '../redux/slices/newsApi';
+import { useGetDailyNewsQuery } from '../redux/slices/newsApi';
 import './NewsList.css';
 
-const NewsList: React.FC = () => {
-  const { data: articles, error, isLoading } = useGetTopHeadlinesQuery();
+const DailyNews: React.FC = () => {
+  const { data: articles, error, isLoading } = useGetDailyNewsQuery();
 
   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.toString()}</p>;
 
   return (
     <div className="news-list">
-      <h1>Top Headlines</h1>
+      <h1>Daily News</h1>
       <div className="news-cards">
         {articles?.map((article, index) => (
           <div key={index} className="news-card">
@@ -34,4 +34,4 @@ const NewsList: React.FC = () => {
   );
 };
 
-export default NewsList;
+export default DailyNews;

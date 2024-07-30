@@ -28,7 +28,24 @@ export const newsApi = createApi({
       query: () => `top-headlines?country=us&apiKey=${API_KEY}`,
       transformResponse: (response: NewsResponse) => response.articles,
     }),
+    searchNews: builder.query<NewsArticle[], string>({
+      query: (query) => `everything?q=${query}&apiKey=${API_KEY}`,
+      transformResponse: (response: NewsResponse) => response.articles,
+    }),
+    getSportsNews: builder.query<NewsArticle[], void>({
+      query: () => `top-headlines?category=sports&country=us&apiKey=${API_KEY}`,
+      transformResponse: (response: NewsResponse) => response.articles,
+    }),
+    getDailyNews: builder.query<NewsArticle[], void>({
+      query: () => `top-headlines?category=general&country=us&apiKey=${API_KEY}`,
+      transformResponse: (response: NewsResponse) => response.articles,
+    }),
   }),
 });
 
-export const { useGetTopHeadlinesQuery } = newsApi;
+export const {
+  useGetTopHeadlinesQuery,
+  useSearchNewsQuery,
+  useGetSportsNewsQuery,
+  useGetDailyNewsQuery,
+} = newsApi;
