@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const API_KEY = '56ecc62728f3431e962ce79b7c0be505'; // Replace with your News API key
+//const API_KEY = '56ecc62728f3431e962ce79b7c0be505'; // Replace with your News API key
+const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
 
 export interface NewsArticle {
   source: {
