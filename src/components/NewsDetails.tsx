@@ -23,12 +23,12 @@ const NewsDetails: React.FC = () => {
     return <p>Article not found.</p>;
   }
 
-  const { title, description, url, urlToImage } = article;
+  const { title, description, url, image } = article;
 
   return (
     <div className="news-details">
       <h1>{title}</h1>
-      {urlToImage && <img src={urlToImage} alt={title} />}
+      {image && <img src={image} alt={title} />}
       <p>{description}</p>
       <a href={url} target="_blank" rel="noopener noreferrer">Read more</a>
     </div>

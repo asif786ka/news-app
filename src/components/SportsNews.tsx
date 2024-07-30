@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useGetSportsNewsQuery } from '../redux/slices/newsApi';
-import './NewsList.css';
+import './SportsNews.css';
 
 const SportsNews: React.FC = () => {
   const { data: articles, error, isLoading } = useGetSportsNewsQuery();
 
   if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.toString()}</p>;
+  if (error) return <p>Error: {JSON.stringify(error)}</p>;
 
   return (
     <div className="news-list">
@@ -15,9 +15,9 @@ const SportsNews: React.FC = () => {
       <div className="news-cards">
         {articles?.map((article, index) => (
           <div key={index} className="news-card">
-            {article.urlToImage && (
+            {article.image && (
               <img
-                src={article.urlToImage}
+                src={article.image}
                 alt={article.title}
                 className="news-image"
               />

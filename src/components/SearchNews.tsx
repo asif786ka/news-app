@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSearchNewsQuery } from '../redux/slices/newsApi';
-import './NewsList.css';
+import './SearchNews.css';
 
 const SearchNews: React.FC = () => {
   const [query, setQuery] = useState('');
@@ -18,13 +18,13 @@ const SearchNews: React.FC = () => {
         placeholder="Search for news..."
       />
       {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error.toString()}</p>}
+      {error && <p>Error: {JSON.stringify(error)}</p>}
       <div className="news-cards">
         {articles?.map((article, index) => (
           <div key={index} className="news-card">
-            {article.urlToImage && (
+            {article.image && (
               <img
-                src={article.urlToImage}
+                src={article.image}
                 alt={article.title}
                 className="news-image"
               />
